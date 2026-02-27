@@ -40,6 +40,17 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
+        with open(CITY_DATA[city]) as file :
+        data = file.read()
+    
+    start_time = data['Start Time']
+    filter_data = []
+
+    for index, time in enumerate(start_time) :
+        if month in time and day in time :
+            filter_data.append(data[index])
+    
+    df = filter_data
 
 
     return df
